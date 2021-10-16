@@ -43,4 +43,11 @@ public class CustomerRepository implements ICustomerRepository{
         query.setParameter("id", id);
         return query.getSingleResult();
     }
+
+    @Override
+    public List<Customer> getByName(String name) {
+        TypedQuery<Customer> query = entityManager.createQuery("select c from Customer as c where c.name like :name", Customer.class);
+        query.setParameter("name", name);
+        return query.getResultList();
+    }
 }

@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/customer")
@@ -26,9 +27,15 @@ public class CustomerController {
     private String uploadFile;
 
     @GetMapping("")
-    public ModelAndView showAll() {
+    public ModelAndView showAll(@RequestParam("q") Optional<String> name) {
         ModelAndView modelAndView = new ModelAndView("/customer/list");
-        List<Customer> customers = customerService.getAll();
+        List<Customer> customers = null;
+        if (name.isPresent()) {
+            customers = customerService.getByName(name.get());
+            modelAndView.addObject("customers", customers);
+        } else {
+            customers = customerService.getAll();
+        }
         modelAndView.addObject("customers", customers);
         return modelAndView;
     }

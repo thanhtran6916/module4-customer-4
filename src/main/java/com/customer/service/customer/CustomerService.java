@@ -32,4 +32,10 @@ public class CustomerService implements ICustomerService{
     public Customer getById(Long id) {
         return customerRepository.getById(id);
     }
+
+    @Override
+    public List<Customer> getByName(String name) {
+        name = "%" + name + "%";
+        return customerRepository.getByName(name);
+    }
 }
