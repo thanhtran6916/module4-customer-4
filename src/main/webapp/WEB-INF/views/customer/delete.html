@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:object="${customer}">
+    <p>Id: </p> <span th:text="${id}"></span>
+    <p>Name</p> <span th:text="*{name}"></span>
+    <p>Address</p> <span th:text="*{address}"></span>
+    <p>Image</p> <img width="100px" height="100px" th:src="'/img/' + *{image}" alt="">
+    <form method="post">
+        <button>Yes</button>
+    </form>
+    <p><a href="/customer">No</a></p>
+</div>
+</body>
+</html>

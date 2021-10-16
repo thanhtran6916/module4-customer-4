@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:object="${customerForm}" method="post" enctype="multipart/form-data">
+    <p>Name</p>
+    <input type="text" name="name">
+    <p>Address</p>
+    <input type="text" name="address">
+    <p>Image</p>
+    <input type="file" name="image">
+    <button>Save</button>
+</form>
+</body>
+</html>
